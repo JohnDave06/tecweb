@@ -150,6 +150,7 @@
         unset($z);
 
         // Ejercicio 5: Conversión de tipos de datos
+        echo "<hr>";
         $a = "7 personas";
         $b = (integer) $a;
         $a = "9E3";
@@ -159,6 +160,36 @@
         echo "a: $a (tipo: ". gettype($a) .")<br>\n";
         echo "b: $b (tipo: ". gettype($b) .")<br>\n";
         echo "c: $c (tipo: ". gettype($c) .")<br>\n";
+
+        // Ejercicio 6: Valores booleanos
+        echo "<hr>";
+        echo "<br>Ejercicio 6: Valores Booleanos<br>";
+        $a = "0";
+        $b = "TRUE";
+        $c = FALSE;
+        $d = ($a OR $b);
+        $e = ($a AND $c);
+        $f = ($a XOR $b);
+
+        var_dump($a); echo "<br>";
+        var_dump($b); echo "<br>";
+        var_dump($c); echo "<br>";
+        var_dump($d); echo "<br>";
+        var_dump($e); echo "<br>";
+        var_dump($f); echo "<br>";
+
+        // Mostrar valores booleanos con echo
+        echo "<br>Valor de \$c con echo: " . var_export($c, true);
+        echo "<br>Valor de \$e con echo: " . var_export($e, true);
+
+        unset($a);
+        unset($b);
+        unset($c);
+        unset($d);
+        unset($e);
+        unset($f);
+
+        echo "<hr>";
     ?>
     </body>
 </html>
