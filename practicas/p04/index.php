@@ -13,7 +13,7 @@
         // Ejercicio 1: Validar nombres de variables
         $variables = ['$_myvar', '$_7var', 'myvar', '$myvar', '$var7', '$_element1', '$house*5'];
         foreach ($variables as $var) {
-            echo "La variable $var es " . (preg_match('/^\$[a-zA-Z_][a-zA-Z0-9_]*$/', $var) ? "válida" : "inválida") . "<br>";
+            echo "La variable $var es: " . (preg_match('/^\$[a-zA-Z_][a-zA-Z0-9_]*$/', $var) ? "válida" : "inválida") . "\n";
         }
         //`$_myvar` Válida: Las variables pueden iniciar con `_` seguido de letras o números.
         //`$_7var` Válida: Se permite iniciar con `_` y contener números y letras.
@@ -29,6 +29,35 @@
         unset($var7);
         unset($_element1);
 
+        echo "<hr>";
+
+        // Ejercicio 2: Asignaciones y referencias
+        $a = "ManejadorSQL";
+        $b = 'MySQL';
+        $c = &$a;
+
+        echo "\n\nValores iniciales:\n";
+        echo "a: $a\n";
+        echo "b: $b\n";
+        echo "c: $c\n";
+
+        // Segunda asignación
+        $a = "PHP server";
+        $b = &$a;
+
+        echo "\nValores después de la segunda asignación:\n";
+        echo "a: $a\n";
+        echo "b: $b\n";
+        echo "c: $c\n";
+
+        // Explicación de lo ocurrido
+        echo "\nExplicación:\n";
+        echo "En la segunda asignación, dado que 'c' es una referencia a 'a', cuando 'a' cambia, 'c' también refleja el nuevo valor. ";
+        echo "Además, al hacer que 'b' apunte a 'a', cualquier cambio en 'a' se reflejará también en 'b'.";
+
+        unset($a);
+        unset($b);
+        unset($c);
         echo "<hr>";
     ?>
     </body>
