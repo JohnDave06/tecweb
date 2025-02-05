@@ -8,6 +8,7 @@
     </head>
     <body>
     <?php
+        error_reporting(0);
         // Ejericio 1: Determinar variables válidas en PHP
         echo "\n<br>Ejercicio 1: Determinar variables válidas en PHP<br>\n";
         $variables = ['$_myvar', '$_7var', 'myvar', '$myvar', '$var7', '$_element1', '$house*5'];
