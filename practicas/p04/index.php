@@ -9,6 +9,7 @@
     <body>
     <?php
         // Ejericio 1: Determinar variables válidas en PHP
+        echo "\n<br>Ejercicio 1: Determinar variables válidas en PHP<br>\n";
         $variables = ['$_myvar', '$_7var', 'myvar', '$myvar', '$var7', '$_element1', '$house*5'];
         foreach ($variables as $var) {
             echo "La variable $var es: " . (preg_match('/^\$[a-zA-Z_][a-zA-Z0-9_]*$/', $var) ? "válida" : "inválida") . "\n";
@@ -34,6 +35,7 @@
         $b = 'MySQL';
         $c = &$a;
 
+        echo "\n<br>Ejercicio 2: Asignaciones y referencias<br>\n";
         echo "\n\nValores iniciales:\n";
         echo "a: $a\n";
         echo "b: $b\n";
@@ -60,6 +62,7 @@
 
         
         // Ejercicio 3: Evolución de variables
+        echo "\n<br>Ejercicio 3: Evolución de variables<br>\n";
         $a = "PHP5";
         echo "Después de asignar \$a = 'PHP5': ";
         echo "Resultado: " . $a;
@@ -104,6 +107,7 @@
 
         // Ejercicio 4: Uso de $GLOBALS
         global $a, $z, $b, $c; 
+        echo "\n<br>Ejercicio 4: Uso de $GLOBALS<br>\n";
 
         $a = "PHP5";
         echo "Después de asignar \$a = 'PHP5': ";
@@ -144,6 +148,17 @@
         unset($b);
         unset($c);
         unset($z);
+
+        // Ejercicio 5: Conversión de tipos de datos
+        $a = "7 personas";
+        $b = (integer) $a;
+        $a = "9E3";
+        $c = (double) $a;
+
+        echo "\n<br>Ejercicio 5: Conversiones de tipos<br>\n";
+        echo "a: $a (tipo: ". gettype($a) .")<br>\n";
+        echo "b: $b (tipo: ". gettype($b) .")<br>\n";
+        echo "c: $c (tipo: ". gettype($c) .")<br>\n";
     ?>
     </body>
 </html>
