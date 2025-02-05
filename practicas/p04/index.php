@@ -101,6 +101,49 @@
         unset($z);
 
         echo "<hr>";
+
+        // Ejercicio 4: Uso de $GLOBALS
+        global $a, $z, $b, $c; 
+
+        $a = "PHP5";
+        echo "Después de asignar \$a = 'PHP5': ";
+        echo "Resultado: " . $a;
+        echo "<br><br>";
+
+        $z[] = &$a;
+        echo "Después de asignar \$z[] = &\$a: ";
+        echo "Resultado: " . $z[0];
+        echo "<br><br>";
+
+        $b = "5a version de PHP";
+        echo "Después de asignar \$b = '5a version de PHP': ";
+        echo "Resultado: " . $b;
+        echo "<br><br>";
+
+        $c = $b * 10;
+        echo "Después de asignar \$c = \$b * 10: ";
+        echo "Resultado: " . $c;
+        echo "<br><br>";
+
+        $a .= $b;
+        echo "Después de asignar \$a .= \$b: ";
+        echo "Resultado: " . $a;
+        echo "<br><br>";
+
+        $b *= $c;
+        echo "Después de asignar \$b *= \$c: ";
+        echo "Resultado: " . $b;
+        echo "<br><br>";
+
+        $z[0] = "MySQL";
+        echo "Después de asignar \$z[0] = 'MySQL': ";
+        echo "Resultado: " . $z[0];
+        echo "<br><br>";
+
+        unset($a);
+        unset($b);
+        unset($c);
+        unset($z);
     ?>
     </body>
 </html>
