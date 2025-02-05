@@ -9,8 +9,6 @@
     <body>
     <?php
         // Ejericio 1: Determinar variables válidas en PHP
-
-        // Ejercicio 1: Validar nombres de variables
         $variables = ['$_myvar', '$_7var', 'myvar', '$myvar', '$var7', '$_element1', '$house*5'];
         foreach ($variables as $var) {
             echo "La variable $var es: " . (preg_match('/^\$[a-zA-Z_][a-zA-Z0-9_]*$/', $var) ? "válida" : "inválida") . "\n";
@@ -58,6 +56,50 @@
         unset($a);
         unset($b);
         unset($c);
+        echo "<hr>\n\n";
+
+        
+        // Ejercicio 3: Evolución de variables
+        $a = "PHP5";
+        echo "Después de asignar \$a = 'PHP5': ";
+        echo "Resultado: " . $a;
+        echo "<br><br>\n";
+
+        $z[] = &$a;
+        echo "Después de asignar \$z[] = &\$a: ";
+        echo "Resultado: " . $z[0];
+        echo "<br><br>\n";
+        
+        $b = "5a version de PHP";
+        echo "Después de asignar \$b = '5a version de PHP': ";
+        echo "Resultado: " . $b;
+        echo "<br><br>\n";
+
+        $c = $b * 10;
+        echo "Después de asignar \$c = \$b * 10: ";
+        echo "Resultado: " . $c;
+        echo "<br><br>\n";
+
+        $a .= $b;
+        echo "Después de asignar \$a .= \$b: ";
+        echo "Resultado: " . $a;
+        echo "<br><br>\n";
+
+        $b *= $c;
+        echo "Después de asignar \$b *= \$c: ";
+        echo "Resultado: " . $b;
+        echo "<br><br>\n";
+
+        $z[0] = "MySQL";
+        echo "Después de asignar \$z[0] = 'MySQL': ";
+        echo "Resultado: " . $z[0];
+        echo "<br><br>\n"; 
+        
+        unset($a);
+        unset($b);
+        unset($c);
+        unset($z);
+
         echo "<hr>";
     ?>
     </body>
