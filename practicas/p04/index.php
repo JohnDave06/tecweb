@@ -190,6 +190,12 @@
         unset($f);
 
         echo "<hr>";
+
+        // Ejercicio 7: Uso de $_SERVER
+        echo "<br>Ejercicio 7: Información del Servidor<br>";
+        echo "Versión de Apache y PHP: " . $_SERVER['SERVER_SOFTWARE'] . "<br>";
+        echo "Sistema operativo del servidor: " . PHP_OS . "<br>";
+        echo "Idioma del navegador del cliente: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br>";
     ?>
     </body>
 </html>
