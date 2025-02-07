@@ -49,9 +49,10 @@
     <?php
         require_once __DIR__ .'/src/funciones.php';
 
-        if(isset($_GET['numero']))
-        {
-            obtenerMultiplo($_GET['numero']);
+        if (isset($_GET['numero'])) {
+            $numero = intval($_GET['numero']);
+            obtenerMultiploWhile($numero);
+            obtenerMultiploDoWhile($numero);
         }
     ?>
     <hr>
@@ -87,10 +88,30 @@
     ?>
     <hr>
 
-    <h2>Ejercicio 6</h2>
-    <p></p>
     <?php
+        require_once __DIR__ .'/src/funciones.php';
+        $parqueVehicular = vehiculos();
     ?>
+    <h3>Consultar Vehículos almacenados</h3>
+    <form method="post" action="">
+        <input type="hidden" name="mostrar_todos" value="1">
+        <input type="submit" value="Consultar">
+    </form>
+
+    <h3>Consultar Información del Parque Vehicular</h3>
+    <form method="post" action="">
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula" name="matricula">
+        <br>
+        <input type="submit" value="Verificar">
+    </form>
+
+    <?php
+    consultar_vehiculo($parqueVehicular);
+    ?>
+    <hr>
+</body>
+</html>
     <hr>
 </body>
 </html>
