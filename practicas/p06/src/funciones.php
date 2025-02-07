@@ -59,4 +59,28 @@ function obtenerMultiplo($num) {
 
     echo '<h3>Primer múltiplo encontrado con do-while: ' .$aleatorio. '</h3>';
 }
+
+// EJERCICIO 4
+$arreglo = array();
+for ($i = 97; $i <= 122; $i++) {
+    $arreglo[$i] = chr($i);
+}
+
+function indices($arreglo) {
+    echo '<table border="1">';
+    echo '<tr><th>Índice</th><th>Valor</th></tr>';
+    foreach ($arreglo as $key => $value) {
+        echo '<tr>';
+        echo '<td>' . $key . '</td>';
+        echo '<td>' . $value . '</td>';
+        echo '</tr>';
+    }
+    echo '</table>';
+}
+
+// EJERCICIO 5
+
+// EJERCICIO 6
+
+// EJERCICIO 7
 ?>
