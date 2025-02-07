@@ -92,6 +92,9 @@
         require_once __DIR__ .'/src/funciones.php';
         $parqueVehicular = vehiculos();
     ?>
+    <h2>Ejercicio 6</h2>
+    <p>Crea en código duro un arreglo asociativo que sirva para registrar el parque vehicular de
+    una ciudad.</p>
     <h3>Consultar Vehículos almacenados</h3>
     <form method="post" action="">
         <input type="hidden" name="mostrar_todos" value="1">
@@ -109,9 +112,6 @@
     <?php
     consultar_vehiculo($parqueVehicular);
     ?>
-    <hr>
-</body>
-</html>
     <hr>
 </body>
 </html>
