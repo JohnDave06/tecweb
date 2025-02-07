@@ -114,186 +114,186 @@ function edad() {
 // EJERCICIO 6
 function vehiculos() {
     $parqueVehicular = array(
-        "UBN6338" => array(
-        "Auto" => array(
-            "marca" => "HONDA",
-            "modelo" => 2020,
-            "tipo" => "camioneta"
+        'UBN6338' => array(
+    'Auto' => array(
+        'marca' => 'HONDA',
+        'modelo' => 2020,
+        'tipo' => 'camioneta'
+    ),
+    'Propietario' => array(
+        'nombre' => 'Alfonzo Esparza',
+        'ciudad' => 'Puebla, Pue.',
+        'direccion' => 'C.U., Jardines de San Manuel'
+    )
+    ),
+    'UBN6339' => array(
+        'Auto' => array(
+            'marca' => 'MAZDA',
+            'modelo' => 2019,
+            'tipo' => 'sedan'
         ),
-        "Propietario" => array(
-            "nombre" => "Alfonzo Esparza",
-            "ciudad" => "Puebla, Pue.",
-            "direccion" => "C.U., Jardines de San Manuel"
+        'Propietario' => array(
+            'nombre' => 'Ma. del Consuelo Molina',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => '97 oriente'
         )
+    ),
+    'UBN6340' => array(
+        'Auto' => array(
+            'marca' => 'TOYOTA',
+            'modelo' => 2018,
+            'tipo' => 'hatchback'
         ),
-        "UBN6339" => array(
-            "Auto" => array(
-                "marca" => "MAZDA",
-                "modelo" => 2019,
-                "tipo" => "sedan"
-            ),
-            "Propietario" => array(
-                "nombre" => "Ma. del Consuelo Molina",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "97 oriente"
-            )
-        ),
-        "UBN6340" => array(
-            "Auto" => array(
-                "marca" => "TOYOTA",
-                "modelo" => 2018,
-                "tipo" => "hatchback"
-            ),
-            "Propietario" => array(
-                "nombre" => "Juan Pérez",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Av. Reforma"
-            )
-        ),
-        "UBN6341" => array(
-            "Auto" => array(
-                "marca" => "FORD",
-                "modelo" => 2017,
-                "tipo" => "sedan"
-            ),
-            "Propietario" => array(
-                "nombre" => "Ana Gómez",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Calle 5 de Mayo"
-            )
-        ),
-        "UBN6342" => array(
-            "Auto" => array(
-                "marca" => "CHEVROLET",
-                "modelo" => 2016,
-                "tipo" => "camioneta"
-            ),
-            "Propietario" => array(
-                "nombre" => "Luis Martínez",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Blvd. Atlixco"
-            )
-        ),
-        "UBN6343" => array(
-            "Auto" => array(
-                "marca" => "NISSAN",
-                "modelo" => 2015,
-                "tipo" => "sedan"
-            ),
-            "Propietario" => array(
-                "nombre" => "Carlos Ramírez",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Col. La Paz"
-            )
-        ),
-        "UBN6344" => array(
-            "Auto" => array(
-                "marca" => "BMW",
-                "modelo" => 2014,
-                "tipo" => "deportivo"
-            ),
-            "Propietario" => array(
-                "nombre" => "Beatriz López",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Av. Juárez"
-            )
-        ),
-        "UBN6345" => array(
-            "Auto" => array(
-                "marca" => "MERCEDES",
-                "modelo" => 2013,
-                "tipo" => "SUV"
-            ),
-            "Propietario" => array(
-                "nombre" => "Fernando Díaz",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Blvd. 5 de Mayo"
-            )
-        ),
-        "UBN6346" => array(
-            "Auto" => array(
-                "marca" => "KIA",
-                "modelo" => 2012,
-                "tipo" => "hatchback"
-            ),
-            "Propietario" => array(
-                "nombre" => "María González",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Av. Margaritas"
-            )
-        ),
-        "UBN6347" => array(
-            "Auto" => array(
-                "marca" => "HYUNDAI",
-                "modelo" => 2011,
-                "tipo" => "sedan"
-            ),
-            "Propietario" => array(
-                "nombre" => "Pablo Herrera",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Calle 3 Sur"
-            )
-        ),
-        "UBN6348" => array(
-            "Auto" => array(
-                "marca" => "AUDI",
-                "modelo" => 2010,
-                "tipo" => "deportivo"
-            ),
-            "Propietario" => array(
-                "nombre" => "Lucía Fernández",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Col. El Mirador"
-            )
-        ),
-        "UBN6349" => array(
-            "Auto" => array(
-                "marca" => "VOLKSWAGEN",
-                "modelo" => 2009,
-                "tipo" => "camioneta"
-            ),
-            "Propietario" => array(
-                "nombre" => "Raúl Torres",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "San Manuel"
-            )
-        ),
-        "UBN6350" => array(
-            "Auto" => array(
-                "marca" => "RENAULT",
-                "modelo" => 2008,
-                "tipo" => "hatchback"
-            ),
-            "Propietario" => array(
-                "nombre" => "Verónica Méndez",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Col. La Noria"
-            )
-        ),
-        "UBN6351" => array(
-            "Auto" => array(
-                "marca" => "PEUGEOT",
-                "modelo" => 2007,
-                "tipo" => "sedan"
-            ),
-            "Propietario" => array(
-                "nombre" => "Jorge Estrada",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Col. Humboldt"
-            )
-        ),
-        "UBN6352" => array(
-            "Auto" => array(
-                "marca" => "FIAT",
-                "modelo" => 2006,
-                "tipo" => "SUV"
-            ),
-            "Propietario" => array(
-                "nombre" => "Gabriela Navarro",
-                "ciudad" => "Puebla, Pue.",
-                "direccion" => "Av. San Francisco"
-            )
+        'Propietario' => array(
+            'nombre' => 'Juan Pérez',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Av. Reforma'
         )
+    ),
+    'UBN6341' => array(
+        'Auto' => array(
+            'marca' => 'FORD',
+            'modelo' => 2017,
+            'tipo' => 'sedan'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Ana Gómez',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Calle 5 de Mayo'
+        )
+    ),
+    'UBN6342' => array(
+        'Auto' => array(
+            'marca' => 'CHEVROLET',
+            'modelo' => 2016,
+            'tipo' => 'camioneta'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Luis Martínez',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Blvd. Atlixco'
+        )
+    ),
+    'UBN6343' => array(
+        'Auto' => array(
+            'marca' => 'NISSAN',
+            'modelo' => 2015,
+            'tipo' => 'sedan'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Carlos Ramírez',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Col. La Paz'
+        )
+    ),
+    'UBN6344' => array(
+        'Auto' => array(
+            'marca' => 'BMW',
+            'modelo' => 2014,
+            'tipo' => 'deportivo'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Beatriz López',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Av. Juárez'
+        )
+    ),
+    'UBN6345' => array(
+        'Auto' => array(
+            'marca' => 'MERCEDES',
+            'modelo' => 2013,
+            'tipo' => 'SUV'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Fernando Díaz',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Blvd. 5 de Mayo'
+        )
+    ),
+    'UBN6346' => array(
+        'Auto' => array(
+            'marca' => 'KIA',
+            'modelo' => 2012,
+            'tipo' => 'hatchback'
+        ),
+        'Propietario' => array(
+            'nombre' => 'María González',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Av. Margaritas'
+        )
+    ),
+    'UBN6347' => array(
+        'Auto' => array(
+            'marca' => 'HYUNDAI',
+            'modelo' => 2011,
+            'tipo' => 'sedan'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Pablo Herrera',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Calle 3 Sur'
+        )
+    ),
+    'UBN6348' => array(
+        'Auto' => array(
+            'marca' => 'AUDI',
+            'modelo' => 2010,
+            'tipo' => 'deportivo'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Lucía Fernández',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Col. El Mirador'
+        )
+    ),
+    'UBN6349' => array(
+        'Auto' => array(
+            'marca' => 'VOLKSWAGEN',
+            'modelo' => 2009,
+            'tipo' => 'camioneta'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Raúl Torres',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'San Manuel'
+        )
+    ),
+    'UBN6350' => array(
+        'Auto' => array(
+            'marca' => 'RENAULT',
+            'modelo' => 2008,
+            'tipo' => 'hatchback'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Verónica Méndez',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Col. La Noria'
+        )
+    ),
+    'UBN6351' => array(
+        'Auto' => array(
+            'marca' => 'PEUGEOT',
+            'modelo' => 2007,
+            'tipo' => 'sedan'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Jorge Estrada',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Col. Humboldt'
+        )
+    ),
+    'UBN6352' => array(
+        'Auto' => array(
+            'marca' => 'FIAT',
+            'modelo' => 2006,
+            'tipo' => 'SUV'
+        ),
+        'Propietario' => array(
+            'nombre' => 'Gabriela Navarro',
+            'ciudad' => 'Puebla, Pue.',
+            'direccion' => 'Av. San Francisco'
+        )
+    )
     );
 
     return $parqueVehicular;
