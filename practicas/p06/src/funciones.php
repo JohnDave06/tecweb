@@ -12,7 +12,7 @@ function es_multiplo7y5($num)
     }
 }
 
-// EJERCICIO 2
+// EJERCICIO 
 function generar_secuencia()
 {
     $matriz = array();
@@ -79,6 +79,21 @@ function indices($arreglo) {
 }
 
 // EJERCICIO 5
+function edad(){
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $edad = intval($_POST['edad']);
+        $sexo = $_POST['sexo'];
+        if ($sexo == "femenino" && $edad >= 18 && $edad <= 35) {
+            echo '<h3>Bienvenida, usted está en el rango de edad permitido.</h3>';
+        } 
+        elseif ($sexo == "masculino" && $edad >= 18 && $edad <= 35) {
+            echo '<h3>Bienvenido</h3>';
+        } 
+        else {
+            echo '<h3>Error: No cumple con los requisitos.</h3>';
+        }
+    }
+}
 
 // EJERCICIO 6
 
