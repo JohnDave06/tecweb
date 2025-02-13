@@ -61,8 +61,8 @@
 						<td><?= $row['modelo'] ?></td>
 						<td><?= $row['precio'] ?></td>
 						<td><?= $row['unidades'] ?></td>
-						<td><?= utf8_encode($row['detalles']) ?></td>
-						<td><img src=<?= $row['imagen'] ?> ></td>
+						<td><?= ($row['detalles']) ?></td>
+						<td><img src=<?= $row['imagen'] ?> width="150"  height="150" ></td>
 					</tr>
 				</tbody>
 			</table>
