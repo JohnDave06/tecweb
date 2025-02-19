@@ -1,202 +1,157 @@
-<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.1//EN”
-“http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd”>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Práctica 4</title>
+</head>
+<body>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang=“es” lang=“es”>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Práctica 4</title>
-    </head>
-    <body>
+    <!-- Ejercicio 1: Determinar variables válidas en PHP -->
+    <p>Ejercicio 1: Determinar variables válidas en PHP</p>
+    
     <?php
-        error_reporting(0);
-        // Ejericio 1: Determinar variables válidas en PHP
-        echo "\n<br>Ejercicio 1: Determinar variables válidas en PHP<br>\n";
-        $variables = ['$_myvar', '$_7var', 'myvar', '$myvar', '$var7', '$_element1', '$house*5'];
-        foreach ($variables as $var) {
-            echo "La variable $var es: " . (preg_match('/^\$[a-zA-Z_][a-zA-Z0-9_]*$/', $var) ? "válida" : "inválida") . "\n";
-        }
-        //`$_myvar` Válida: Las variables pueden iniciar con `_` seguido de letras o números.
-        //`$_7var` Válida: Se permite iniciar con `_` y contener números y letras.
-        //`myvar` Inválida: No tiene el prefijo `$`, todas las variables en PHP deben iniciar con `$`.
-        //`$myvar` Válida: Sigue las reglas de nomenclatura de PHP.
-        //`$var7` Válida: Puede contener números siempre y cuando no inicie con ellos.
-        //`$_element1` Válida: Puede iniciar con `_` y contener números y letras.
-        //`$house*5` Inválida: No se pueden usar operadores en los nombres de variables.
+    error_reporting(0);
+    $variables = array('_myvar', '_7var', 'myvar', 'var7', '_element1', 'house*5');
+    foreach ($variables as $var) {
+        echo '<p>La variable $' . htmlspecialchars($var, ENT_QUOTES, 'UTF-8') . ' es: ' . 
+        (preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $var) ? 'válida' : 'inválida') . '</p>';
+    }
 
-        unset($_myvar);
-        unset($_7var);
-        unset($myvar);
-        unset($var7);
-        unset($_element1);
-
-        echo "<hr>";
-
-        // Ejercicio 2: Asignaciones y referencias
-        $a = "ManejadorSQL";
-        $b = 'MySQL';
-        $c = &$a;
-
-        echo "\n<br>Ejercicio 2: Asignaciones y referencias<br>\n";
-        echo "\n\nValores iniciales:\n";
-        echo "a: $a\n";
-        echo "b: $b\n";
-        echo "c: $c\n";
-
-        // Segunda asignación
-        $a = "PHP server";
-        $b = &$a;
-
-        echo "\nValores después de la segunda asignación:\n";
-        echo "a: $a\n";
-        echo "b: $b\n";
-        echo "c: $c\n";
-
-        // Explicación de lo ocurrido
-        echo "\nExplicación:\n";
-        echo "En la segunda asignación, dado que 'c' es una referencia a 'a', cuando 'a' cambia, 'c' también refleja el nuevo valor. ";
-        echo "Además, al hacer que 'b' apunte a 'a', cualquier cambio en 'a' se reflejará también en 'b'.";
-
-        unset($a);
-        unset($b);
-        unset($c);
-        echo "<hr>\n\n";
-
-        
-        // Ejercicio 3: Evolución de variables
-        echo "\n<br>Ejercicio 3: Evolución de variables<br>\n";
-        $a = "PHP5";
-        echo "Después de asignar \$a = 'PHP5': ";
-        echo "Resultado: " . $a;
-        echo "<br><br>\n";
-
-        $z[] = &$a;
-        echo "Después de asignar \$z[] = &\$a: ";
-        echo "Resultado: " . $z[0];
-        echo "<br><br>\n";
-        
-        $b = "5a version de PHP";
-        echo "Después de asignar \$b = '5a version de PHP': ";
-        echo "Resultado: " . $b;
-        echo "<br><br>\n";
-
-        $c = $b * 10;
-        echo "Después de asignar \$c = \$b * 10: ";
-        echo "Resultado: " . $c;
-        echo "<br><br>\n";
-
-        $a .= $b;
-        echo "Después de asignar \$a .= \$b: ";
-        echo "Resultado: " . $a;
-        echo "<br><br>\n";
-
-        $b *= $c;
-        echo "Después de asignar \$b *= \$c: ";
-        echo "Resultado: " . $b;
-        echo "<br><br>\n";
-
-        $z[0] = "MySQL";
-        echo "Después de asignar \$z[0] = 'MySQL': ";
-        echo "Resultado: " . $z[0];
-        echo "<br><br>\n"; 
-        
-        unset($a);
-        unset($b);
-        unset($c);
-        unset($z);
-
-        echo "<hr>";
-
-        // Ejercicio 4: Uso de $GLOBALS
-        global $a, $z, $b, $c; 
-        echo "\n<br>Ejercicio 4: Uso de $GLOBALS<br>\n";
-
-        $a = "PHP5";
-        echo "Después de asignar \$a = 'PHP5': ";
-        echo "Resultado: " . $a;
-        echo "<br><br>";
-
-        $z[] = &$a;
-        echo "Después de asignar \$z[] = &\$a: ";
-        echo "Resultado: " . $z[0];
-        echo "<br><br>";
-
-        $b = "5a version de PHP";
-        echo "Después de asignar \$b = '5a version de PHP': ";
-        echo "Resultado: " . $b;
-        echo "<br><br>";
-
-        $c = $b * 10;
-        echo "Después de asignar \$c = \$b * 10: ";
-        echo "Resultado: " . $c;
-        echo "<br><br>";
-
-        $a .= $b;
-        echo "Después de asignar \$a .= \$b: ";
-        echo "Resultado: " . $a;
-        echo "<br><br>";
-
-        $b *= $c;
-        echo "Después de asignar \$b *= \$c: ";
-        echo "Resultado: " . $b;
-        echo "<br><br>";
-
-        $z[0] = "MySQL";
-        echo "Después de asignar \$z[0] = 'MySQL': ";
-        echo "Resultado: " . $z[0];
-        echo "<br><br>";
-
-        unset($a);
-        unset($b);
-        unset($c);
-        unset($z);
-
-        // Ejercicio 5: Conversión de tipos de datos
-        echo "<hr>";
-        $a = "7 personas";
-        $b = (integer) $a;
-        $a = "9E3";
-        $c = (double) $a;
-
-        echo "\n<br>Ejercicio 5: Conversiones de tipos<br>\n";
-        echo "a: $a (tipo: ". gettype($a) .")<br>\n";
-        echo "b: $b (tipo: ". gettype($b) .")<br>\n";
-        echo "c: $c (tipo: ". gettype($c) .")<br>\n";
-
-        // Ejercicio 6: Valores booleanos
-        echo "<hr>";
-        echo "<br>Ejercicio 6: Valores Booleanos<br>";
-        $a = "0";
-        $b = "TRUE";
-        $c = FALSE;
-        $d = ($a OR $b);
-        $e = ($a AND $c);
-        $f = ($a XOR $b);
-
-        var_dump($a); echo "<br>";
-        var_dump($b); echo "<br>";
-        var_dump($c); echo "<br>";
-        var_dump($d); echo "<br>";
-        var_dump($e); echo "<br>";
-        var_dump($f); echo "<br>";
-
-        // Mostrar valores booleanos con echo
-        echo "<br>Valor de \$c con echo: " . var_export($c, true);
-        echo "<br>Valor de \$e con echo: " . var_export($e, true);
-
-        unset($a);
-        unset($b);
-        unset($c);
-        unset($d);
-        unset($e);
-        unset($f);
-
-        echo "<hr>";
-
-        // Ejercicio 7: Uso de $_SERVER
-        echo "<br>Ejercicio 7: Información del Servidor<br>";
-        echo "Versión de Apache y PHP: " . $_SERVER['SERVER_SOFTWARE'] . "<br>";
-        echo "Sistema operativo del servidor: " . PHP_OS . "<br>";
-        echo "Idioma del navegador del cliente: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br>";
+    echo '<hr />';
     ?>
-    </body>
+
+    <!-- Ejercicio 2: Asignaciones y referencias -->
+    <p>Ejercicio 2: Asignaciones y referencias</p>
+    
+    <?php
+    $a = "ManejadorSQL";
+    $b = 'MySQL';
+    $c = &$a;
+    echo '<p>Valores iniciales:</p>';
+    echo '<p>a: ' . htmlspecialchars($a, ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>b: ' . htmlspecialchars($b, ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>c: ' . htmlspecialchars($c, ENT_QUOTES, 'UTF-8') . '</p>';
+
+    // Segunda asignación
+    $a = "PHP server";
+    $b = &$a;
+    $c = &$a;
+
+    echo '<p>Valores después de la segunda asignación:</p>';
+    echo '<p>a: ' . htmlspecialchars($a, ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>b: ' . htmlspecialchars($b, ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>c: ' . htmlspecialchars($c, ENT_QUOTES, 'UTF-8') . '</p>';
+
+    // Explicación de lo ocurrido
+    echo '<p>Explicación:</p>';
+    echo '<p>En la segunda asignación, dado que \'c\' es una referencia a \'a\', cuando \'a\' cambia, \'c\' también refleja el nuevo valor. Además, al hacer que \'b\' apunte a \'a\', cualquier cambio en \'a\' se reflejará también en \'b\'. </p>';
+
+    echo '<hr />';
+    ?>
+
+    <!-- Ejercicio 3: Evolución de variables -->
+    <p>Ejercicio 3: Evolución de variables</p>
+    
+    <?php
+    $a = "PHP5";
+    echo '<p>Después de asignar $a = \'PHP5\': </p>';
+    echo '<p>Resultado: ' . htmlspecialchars($a, ENT_QUOTES, 'UTF-8') . '</p>';
+
+    $z[] = &$a;
+    echo '<p>Después de asignar $z[] = &amp;$a: </p>';
+    echo '<p>Resultado: ' . htmlspecialchars($z[0], ENT_QUOTES, 'UTF-8') . '</p>';
+    
+    $b = "5a version de PHP";
+    echo '<p>Después de asignar $b = \'5a version de PHP\': </p>';
+    echo '<p>Resultado: ' . htmlspecialchars($b, ENT_QUOTES, 'UTF-8') . '</p>';
+
+    $c = intval($b) * 10;
+    echo '<p>Después de asignar $c = $b * 10: </p>';
+    echo '<p>Resultado: ' . htmlspecialchars($c, ENT_QUOTES, 'UTF-8') . '</p>';
+
+    $a .= $b;
+    echo '<p>Después de asignar $a .= $b:  </p>';
+    echo '<p>Resultado: ' . htmlspecialchars($a, ENT_QUOTES, 'UTF-8') . '</p>';
+
+    $b *= $c;
+    echo '<p>Después de asignar $b *= $c: </p>';
+    echo '<p>Resultado: ' . htmlspecialchars($b, ENT_QUOTES, 'UTF-8') . '</p>';
+
+    $z[0] = "MySQL";
+    echo '<p>Después de asignar $z[0] = \'MySQL\': </p>';
+    echo '<p>Resultado: ' . htmlspecialchars($z[0], ENT_QUOTES, 'UTF-8') . '</p>'; 
+
+    echo '<hr />';
+    ?>
+
+    <!-- Ejercicio 4: Uso de $GLOBALS -->
+    <p>Ejercicio 4: Uso de $GLOBALS</p>
+    <?php
+    $GLOBALS['a'] = "PHP5";
+    $GLOBALS['b'] = "5a version de PHP";
+    $GLOBALS['c'] = intval($GLOBALS['b']) * 10;
+    
+    echo '<p>Después de asignar $a = \'PHP5\': ' . htmlspecialchars($GLOBALS['a'], ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>Después de asignar $b = \'5a version de PHP\': ' . htmlspecialchars($GLOBALS['b'], ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>Después de asignar $c = $b * 10: ' . htmlspecialchars($GLOBALS['c'], ENT_QUOTES, 'UTF-8') . '</p>';
+    
+    echo '<hr />';
+    ?>
+
+    <!-- Ejercicio 5: Conversiones de tipos -->
+    <p>Ejercicio 5: Conversiones de tipos</p>
+    <?php
+    $a = "7 personas";
+    $b = (int) $a;
+    $a = "9E3";
+    $c = (float) $a;
+    
+    echo '<p>a: ' . htmlspecialchars($a, ENT_QUOTES, 'UTF-8') . ' (tipo: ' . gettype($a) . ')</p>';
+    echo '<p>b: ' . htmlspecialchars($b, ENT_QUOTES, 'UTF-8') . ' (tipo: ' . gettype($b) . ')</p>';
+    echo '<p>c: ' . htmlspecialchars($c, ENT_QUOTES, 'UTF-8') . ' (tipo: ' . gettype($c) . ')</p>';
+
+    echo '<hr />';        
+    ?>
+
+    <!-- Ejercicio 6: Valores Booleanos -->
+    <p>Ejercicio 6: Valores Booleanos</p>
+
+    <?php
+    $a = "0";
+    $b = true;
+    $c = false;
+    $d = ($a || $b);
+    $e = ($a && $c);
+    $f = ($a ^ $b);
+
+    echo '<p>' . htmlspecialchars(var_export($a, true), ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>' . htmlspecialchars(var_export($b, true), ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>' . htmlspecialchars(var_export($c, true), ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>' . htmlspecialchars(var_export($d, true), ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>' . htmlspecialchars(var_export($e, true), ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>' . htmlspecialchars(var_export($f, true), ENT_QUOTES, 'UTF-8') . '</p>';
+
+    // Mostrar valores booleanos con echo
+    echo '<p>Valor de $c con echo: false</p>';
+    echo '<p>Valor de $e con echo: false</p>';
+    
+    echo '<hr />';    
+    ?>
+
+    <!-- Ejercicio 7: Información del Servidor -->
+    <p>Ejercicio 7: Información del Servidor</p>
+
+    <?php
+    echo '<p>Versión de Apache y PHP: ' . htmlspecialchars($_SERVER['SERVER_SOFTWARE'], ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>Sistema operativo del servidor: ' . htmlspecialchars(PHP_OS, ENT_QUOTES, 'UTF-8') . '</p>';
+    echo '<p>Idioma del navegador del cliente: ' . htmlspecialchars($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'No disponible', ENT_QUOTES, 'UTF-8') . '</p>';
+    
+    echo '<hr />';
+    ?>
+
+    <p>
+        <a href="https://validator.w3.org/markup/check?uri=referer"><img
+        src="https://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+    </p>
+</body>
 </html>
