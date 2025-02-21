@@ -23,7 +23,7 @@
         /** Se crea un arreglo con la estructura deseada */
         foreach($row as $num => $registro) {            // Se recorren tuplas
             foreach($registro as $key => $value) {      // Se recorren campos
-                $data[$num][$key] = utf8_encode($value);
+                $data[$num][$key] = ($value);
             }
         }
 
@@ -65,7 +65,7 @@
                         <td><?= $producto['precio'] ?></td>
                         <td><?= $producto['unidades'] ?></td>
                         <td><?= $producto['detalles'] ?></td>
-                        <td><img src="<?= $producto['imagen'] ?>" width="150" height="150" alt="Imagen del producto" /></td>
+                        <td><img src="/practicas/p07/imagen<?= $producto['imagen'] ?>" width="150" height="150" alt="Imagen del producto" /></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
