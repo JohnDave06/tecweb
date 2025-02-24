@@ -11,3 +11,9 @@ function getDatos()
     var div2 = document.getElementById('edad');
     div2.innerHTML = '<h3> Edad: '+edad+'</h3>';
 }
+
+// JS01 Introducción a JavaScript
+function holamundo()
+{
+    alert("Hola Mundo");
+}
