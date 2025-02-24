@@ -192,17 +192,18 @@ function sentenciadowhile()
         if (valor < 10)
         {
             alert("tiene 1 digito");
-        }else   
+        }
+        else   
         {
             if (valor < 100)
             {
                 alert("tiene 2 digitos");
-            }else
+            }else if (valor < 1000)
             {
                 alert("tiene 3 digitos");
             }
         }
-    }while(valor != 0);
+    }while(valor != 0 && valor < 1000);
 }
 
 function sentenciafor()
