@@ -152,3 +152,64 @@ function sentenciaswitch2()
             alert("color no valido");
     }
 }
+
+// JS04 Estructuras de Repetición
+function sentenciawhile()
+{
+    var x = 1;
+    while(x <= 10)
+    {
+        alert(x);
+        x++;
+    }
+}
+
+function sentenciawhile2()
+{
+    var x = 1;
+    var suma = 0;
+    var valor;
+
+    while(x <= 5)
+    {
+        var valor = prompt("ingresa el valor : ", '');
+        valor = parseInt(valor);
+        suma += valor;
+        x++;
+    }
+
+    alert("La suma de los valoes es: "+suma);
+}
+
+function sentenciadowhile()
+{
+    var valor ;
+    do
+    {
+        valor = prompt("ingresa un valor entre 0 y 999: ", '');
+        valor = parseInt(valor);
+        alert (" valor ingresado: "+valor);
+        if (valor < 10)
+        {
+            alert("tiene 1 digito");
+        }else   
+        {
+            if (valor < 100)
+            {
+                alert("tiene 2 digitos");
+            }else
+            {
+                alert("tiene 3 digitos");
+            }
+        }
+    }while(valor != 0);
+}
+
+function sentenciafor()
+{
+    var i;
+    for(i = 1; i <= 10; i++)
+    {
+        alert(i);
+    }
+}
