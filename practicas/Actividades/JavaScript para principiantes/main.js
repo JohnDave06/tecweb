@@ -17,3 +17,20 @@ function holamundo()
 {
     alert("Hola Mundo");
 }
+
+// JS02 Variables, Entradas, Operadores
+function variable()
+{
+    var nombre = "Juan";
+    var edad = 20;
+    var altura = 1.70;
+    var casado = false;
+    alert("Nombre: "+nombre+" Edad: " +edad  +" Altura: "+altura+" Casado: "+casado);
+}
+
+function variable2()
+{
+    var nombre = prompt("ingresa tu nombre: ", "");
+    var edad = prompt("ingresa tu edad: ", "");
+    alert("Hola: "+nombre+" , asi que tienes: " +edad+" años.");
+}
