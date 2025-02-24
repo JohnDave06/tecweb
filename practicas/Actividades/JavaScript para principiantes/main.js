@@ -213,3 +213,108 @@ function sentenciafor()
         alert(i);
     }
 }
+
+// JS05 Funciones
+function implementacion()
+{
+    alert("cuiado "+" ingresa tu documento correctamente");
+    alert("cuiado "+" ingresa tu documento correctamente");
+    alert("cuiado "+" ingresa tu documento correctamente");
+}
+
+function implementacion2()
+{
+    function mensaje()
+    {
+        alert("cuiado "+" ingresa tu documento correctamente");
+    }
+    mensaje();
+    mensaje();
+    mensaje();   
+}
+
+function implementacion3()
+{
+    var valor1 = prompt("ingresa el valor inferior : ", '');
+    var valor2 = prompt("ingresa el valor superior : ", '');
+    valor1 = parseInt(valor1);
+    valor2 = parseInt(valor2);
+    function mostrarrango(valor1, valor2)
+    {
+        var i;
+        for(i = valor1; i <= valor2; i++)
+        {
+            alert(i);
+        }
+    }
+    mostrarrango(valor1, valor2);
+
+}
+
+function retorno()
+{
+    function convertirCastellano(x)
+    {
+        if (x == 1)
+        {
+            return "uno";
+        }else
+        {
+            if (x == 2)
+            {
+                return "dos";
+            }else
+            {
+                if (x == 3)
+                {
+                    return "tres";
+                }else
+                {
+                    if (x == 4)
+                    {
+                        return "cuatro";
+                    }
+                    else
+                    {
+                        if (x == 5)
+                        {
+                            return "cinco";
+                        }
+                        else
+                        {
+                            return "numero no valido";
+                        }
+                    }
+                }
+            }
+        }
+    }
+    var valor = prompt("ingresa un valor entre 1 y 5: ", '');
+    valor = parseInt(valor);
+    alert(convertirCastellano(valor));
+}
+
+function retorno2()
+{
+    function convertirCastellano(x)
+    {
+        switch(x)
+        {
+            case 1:
+                return "uno";
+            case 2:
+                return "dos";
+            case 3:
+                return "tres";
+            case 4:
+                return "cuatro";
+            case 5:
+                return "cinco";
+            default:
+                return "numero no valido";
+        }
+    }
+    var valor = prompt("ingresa un valor entre 1 y 5: ", '');
+    valor = parseInt(valor);
+    alert(convertirCastellano(valor));
+}
