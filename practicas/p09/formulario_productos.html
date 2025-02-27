@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Producto</title>
+    <script>
+        function validarFormulario(event) {
+            event.preventDefault(); // Evita el envío automático del formulario
+
+            let nombre = document.getElementById("nombre").value.trim();
+            let marca = document.getElementById("marca").value.trim();
+            let modelo = document.getElementById("modelo").value.trim();
+            let precio = parseFloat(document.getElementById("precio").value);
+            let detalles = document.getElementById("detalles").value.trim();
+            let unidades = parseInt(document.getElementById("unidades").value);
+            let imagen = document.getElementById("imagen").value.trim();
+            let esValido = true;
+
+            // Validaciones
+            if (nombre === "" || nombre.length > 100) {
+                alert("El nombre es requerido y debe tener máximo 100 caracteres.");
+                esValido = false;
+            }
+
+            if (marca === "") {
+                alert("La marca es requerida.");
+                esValido = false;
+            }
+
+            if (modelo === "" || modelo.length > 25 || !/^[a-zA-Z0-9]+$/.test(modelo)) {
+                alert("El modelo es requerido, alfanumérico y debe tener máximo 25 caracteres.");
+                esValido = false;
+            }
+
+            if (isNaN(precio) || precio <= 99.99) {
+                alert("El precio es requerido y debe ser mayor a 99.99.");
+                esValido = false;
+            }
+
+            if (detalles.length > 250) {
+                alert("Los detalles no deben superar los 250 caracteres.");
+                esValido = false;
+            }
+
+            if (isNaN(unidades) || unidades < 0) {
+                alert("Las unidades deben ser un número mayor o igual a 0.");
+                esValido = false;
+            }
+
+            if (imagen === "") {
+                document.getElementById("imagen").value = "images/default.png";
+            }
+
+            // Si todo es válido, enviamos el formulario
+            if (esValido) {
+                document.getElementById("productoForm").submit();
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Registro de Nuevo Producto</h2>
+    <form id="productoForm" action="http://localhost/tecweb/practicas/p08/set_producto_v2.php" method="post" onsubmit="validarFormulario(event)">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca" required><br><br>
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" required><br><br>
+
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" step="0.01" required><br><br>
+
+        <label for="detalles">Detalles:</label>
+        <textarea id="detalles" name="detalles"></textarea><br><br>
+
+        <label for="unidades">Unidades:</label>
+        <input type="number" id="unidades" name="unidades" required><br><br>
+
+        <label for="imagen">URL de Imagen:</label>
+        <input type="text" id="imagen" name="imagen"><br><br>
+
+        <input type="submit" value="Registrar Producto">
+    </form>
+</body>
+</html>
