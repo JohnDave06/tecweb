@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Producto actualizado con éxito.";
     } else {
         echo "Error al actualizar el producto: " . $stmt->error;
-        echo "<button onclick='window.history.back(), window.history.back()'>Regresar</button>";
+        echo "<button onclick='window.history.back()'>Regresar</button>";
     }
 
     // Cerrar la conexión
