@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto</title>
+    <script>
+        function validarFormulario(event) {
+            event.preventDefault(); // Evita el envío automático del formulario
+
+            let nombre = document.getElementById("nombre").value.trim();
+            let marca = document.getElementById("marca").value.trim();
+            let modelo = document.getElementById("modelo").value.trim();
+            let precio = parseFloat(document.getElementById("precio").value);
+            let detalles = document.getElementById("detalles").value.trim();
+            let unidades = parseInt(document.getElementById("unidades").value);
+            let imagen = document.getElementById("imagen").value.trim();
+            let esValido = true;
+
+            // Validaciones
+            if (nombre === "" || nombre.length > 100) {
+                alert("El nombre es requerido y debe tener máximo 100 caracteres.");
+                esValido = false;
+            }
+
+            if (marca === "") {
+                alert("La marca es requerida.");
+                esValido = false;
+            }
+
+            if (modelo === "" || modelo.length > 25 || !/^[a-zA-Z0-9]+$/.test(modelo)) {
+                alert("El modelo es requerido, alfanumérico y debe tener máximo 25 caracteres.");
+                esValido = false;
+            }
+
+            if (isNaN(precio) || precio <= 99.99) {
+                alert("El precio es requerido y debe ser mayor a 99.99.");
+                esValido = false;
+            }
+
+            if (detalles.length > 250) {
+                alert("Los detalles no deben superar los 250 caracteres.");
+                esValido = false;
+            }
+
+            if (isNaN(unidades) || unidades < 0) {
+                alert("Las unidades deben ser un número mayor o igual a 0.");
+                esValido = false;
+            }
+
+            if (imagen === "") {
+                document.getElementById("imagen").value = "imagen/default.png";
+            }
+
+            // Si todo es válido, enviamos el formulario
+            if (esValido) {
+                document.getElementById("productoForm").submit();
+            }
+        }
+
+        function cargarDatos() {
+            const urlParams = new URLSearchParams(window.location.search);
+            document.getElementById("id").value = urlParams.get('id');
+            document.getElementById("nombre").value = urlParams.get('nombre');
+            document.getElementById("marca").value = urlParams.get('marca');
+            document.getElementById("modelo").value = urlParams.get('modelo');
+            document.getElementById("precio").value = urlParams.get('precio');
+            document.getElementById("detalles").value = urlParams.get('detalles');
+            document.getElementById("unidades").value = urlParams.get('unidades');
+            document.getElementById("imagen").value = urlParams.get('imagen');
+        }
+
+        window.onload = cargarDatos;
+    </script>
+</head>
+<body>
+    <h2>Editar Producto</h2>
+    <form id="productoForm" action="update_producto.php" method="post" onsubmit="validarFormulario(event)">
+        <input type="hidden" id="id" name="id">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca" required><br><br>
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" required><br><br>
+
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" step="0.01" required><br><br>
+
+        <label for="detalles">Detalles:</label>
+        <textarea id="detalles" name="detalles"></textarea><br><br>
+
+        <label for="unidades">Unidades:</label>
+        <input type="number" id="unidades" name="unidades" required><br><br>
+
+        <label for="imagen">URL de Imagen:</label>
+        <input type="text" id="imagen" name="imagen"><br><br>
+
+        <input type="submit" value="Actualizar Producto">
+    </form>
+</body>
+</html>
