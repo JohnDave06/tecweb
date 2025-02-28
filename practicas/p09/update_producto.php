@@ -1,6 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario
+    $id = $_POST['id'];
     $nombre = $_POST['nombre'];
     $marca = $_POST['marca'];
     $modelo = $_POST['modelo'];
@@ -20,17 +21,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Preparar la consulta de actualización
     $sql = "UPDATE productos SET nombre=?, marca=?, modelo=?, precio=?, detalles=?, unidades=?, imagen=? WHERE id=?";
     $stmt = $link->prepare($sql);
-    $stmt->bind_param("sssdsisi", $nombre, $marca, $modelo, $precio, $detalles, $unidades, $imagen, $_POST['id']);
+    $stmt->bind_param("sssdsisi", $nombre, $marca, $modelo, $precio, $detalles, $unidades, $imagen, $id);
 
     // Ejecutar la consulta
     if ($stmt->execute()) {
-        echo "Producto actualizado con éxito.";
+        echo "<script>
+                alert('Producto actualizado con éxito.');
+                    window.location.href = 'get_productos_vigentes_v2.php';
+            </script>";
     } else {
-        echo "Error al actualizar el producto: " . $stmt->error;
-        echo "<button onclick='window.history.back()'>Regresar</button>";
+        echo "<script>
+                alert('Error al actualizar el producto: " . $stmt->error . "');
+                    window.history.back();
+            </script>";
     }
 
-    // Cerrar la conexión
     $stmt->close();
     $link->close();
 }
