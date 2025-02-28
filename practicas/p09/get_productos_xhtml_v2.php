@@ -75,7 +75,7 @@
                             <td><?= $producto['detalles'] ?></td>
                             <td><img src="<?= $producto['imagen'] ?>" width="150" height="150" alt="Imagen del producto" /></td>
                             <td>
-                                <a href="formulario_productos_v2.html?id=<?= $producto['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="formulario_productos_v2.html?id=<?= $producto['id'] ?>&nombre=<?= urlencode($producto['nombre']) ?>&marca=<?= urlencode($producto['marca']) ?>&modelo=<?= urlencode($producto['modelo']) ?>&precio=<?= $producto['precio'] ?>&detalles=<?= urlencode($producto['detalles']) ?>&unidades=<?= $producto['unidades'] ?>&imagen=<?= urlencode($producto['imagen']) ?>" class="btn btn-warning btn-sm">Editar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
