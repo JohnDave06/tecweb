@@ -9,7 +9,7 @@
             event.preventDefault(); // Evita el envío automático del formulario
 
             let nombre = document.getElementById("nombre").value.trim();
-            let marca = document.getElementById("marca").value.trim();
+            let marca = document.getElementById("marca").value;
             let modelo = document.getElementById("modelo").value.trim();
             let precio = parseFloat(document.getElementById("precio").value);
             let detalles = document.getElementById("detalles").value.trim();
@@ -82,7 +82,17 @@
         <input type="text" id="nombre" name="nombre" required><br><br>
 
         <label for="marca">Marca:</label>
-        <input type="text" id="marca" name="marca" required><br><br>
+        <select id="marca" name="marca" required>
+            <option value="">Seleccione una marca</option>
+            <option value="Samsung">Samsung</option>
+            <option value="ASUS">ASUS</option>
+            <option value="Nintendo">Nintendo</option>
+            <option value="Sony">Sony</option>
+            <option value="JBL">JBL</option>
+            <option value="Microsoft">Microsoft</option>
+            <option value="Xbox">Xbox</option>
+            <option value="Hp">Hp</option>
+        </select><br><br>
 
         <label for="modelo">Modelo:</label>
         <input type="text" id="modelo" name="modelo" required><br><br>
