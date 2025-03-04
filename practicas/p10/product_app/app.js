@@ -8,7 +8,7 @@ var baseJSON = {
     "imagen": "img/default.png"
 };
 
-// FUNCIÓN CALLBACK DE BOTÓN "Buscar"
+// FUNCIÓN CALLBACK DE BOTÓN "Buscar por ID"
 function buscarID(e) {
     /**
      * Revisar la siguiente información para entender porqué usar event.preventDefault();
@@ -18,7 +18,7 @@ function buscarID(e) {
     e.preventDefault();
 
     // SE OBTIENE EL ID A BUSCAR
-    var id = document.getElementById('search').value;
+    var id = document.getElementById('searchID').value;
 
     // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
     var client = getXMLHttpRequest();
@@ -36,18 +36,18 @@ function buscarID(e) {
             if(Object.keys(productos).length > 0) {
                 // SE CREA UNA LISTA HTML CON LA DESCRIPCIÓN DEL PRODUCTO
                 let descripcion = '';
-                    descripcion += '<li>precio: '+productos.precio+'</li>';
-                    descripcion += '<li>unidades: '+productos.unidades+'</li>';
-                    descripcion += '<li>modelo: '+productos.modelo+'</li>';
-                    descripcion += '<li>marca: '+productos.marca+'</li>';
-                    descripcion += '<li>detalles: '+productos.detalles+'</li>';
+                    descripcion += '<li>precio: '+productos[0].precio+'</li>';
+                    descripcion += '<li>unidades: '+productos[0].unidades+'</li>';
+                    descripcion += '<li>modelo: '+productos[0].modelo+'</li>';
+                    descripcion += '<li>marca: '+productos[0].marca+'</li>';
+                    descripcion += '<li>detalles: '+productos[0].detalles+'</li>';
                 
                 // SE CREA UNA PLANTILLA PARA CREAR LA(S) FILA(S) A INSERTAR EN EL DOCUMENTO HTML
                 let template = '';
                     template += `
                         <tr>
-                            <td>${productos.id}</td>
-                            <td>${productos.nombre}</td>
+                            <td>${productos[0].id}</td>
+                            <td>${productos[0].nombre}</td>
                             <td><ul>${descripcion}</ul></td>
                         </tr>
                     `;
@@ -57,7 +57,51 @@ function buscarID(e) {
             }
         }
     };
-    client.send("id="+id);
+    client.send("searchID="+id);
+}
+
+// FUNCIÓN CALLBACK DE BOTÓN "Buscar por nombre, marca o detalles"
+function buscarProducto(event) {
+    event.preventDefault(); // Evita el envío automático del formulario
+
+    const search = document.getElementById('searchTerm').value;
+
+    fetch('backend/read.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `search=${encodeURIComponent(search)}`,
+    })
+    .then(response => response.json())
+    .then(data => {
+        const resultados = document.getElementById('productos');
+        resultados.innerHTML = '';
+
+        if (data.length > 0) {
+            data.forEach(producto => {
+                let descripcion = '';
+                descripcion += '<li>precio: '+producto.precio+'</li>';
+                descripcion += '<li>unidades: '+producto.unidades+'</li>';
+                descripcion += '<li>modelo: '+producto.modelo+'</li>';
+                descripcion += '<li>marca: '+producto.marca+'</li>';
+                descripcion += '<li>detalles: '+producto.detalles+'</li>';
+                
+                let template = '';
+                template += `
+                    <tr>
+                        <td>${producto.id}</td>
+                        <td>${producto.nombre}</td>
+                        <td><ul>${descripcion}</ul></td>
+                    </tr>
+                `;
+                resultados.innerHTML += template;
+            });
+        } else {
+            resultados.innerHTML = '<tr><td colspan="3">No se encontraron productos.</td></tr>';
+        }
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 // FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
