@@ -1,11 +1,11 @@
 // JSON BASE A MOSTRAR EN FORMULARIO
 var baseJSON = {
-    "precio": 0.0,
-    "unidades": 1,
-    "modelo": "XX-000",
     "marca": "NA",
+    "modelo": "XX-000",
+    "precio": 0.0,
     "detalles": "NA",
-    "imagen": "img/default.png"
+    "unidades": 1,
+    "imagen": "imagen/default.png"
 };
 
 // FUNCIÓN CALLBACK DE BOTÓN "Buscar por ID"
@@ -114,6 +114,36 @@ function agregarProducto(e) {
     var finalJSON = JSON.parse(productoJsonString);
     // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
     finalJSON['nombre'] = document.getElementById('name').value;
+
+    // VALIDACIONES
+    if (finalJSON['nombre'].trim() === "" || finalJSON['nombre'].length > 100) {
+        alert("El nombre es requerido y debe tener máximo 100 caracteres.");
+        return;
+    }
+    if (finalJSON['marca'].trim() === "") {
+        alert("La marca es requerida.");
+        return;
+    }
+    if (finalJSON['modelo'].trim() === "" || finalJSON['modelo'].length > 25 || !/^[a-zA-Z0-9]+$/.test(finalJSON['modelo'])) {
+        alert("El modelo es requerido, alfanumérico y debe tener máximo 25 caracteres.");
+        return;
+    }
+    if (isNaN(finalJSON['precio']) || finalJSON['precio'] <= 99.99) {
+        alert("El precio es requerido y debe ser mayor a 99.99.");
+        return;
+    }
+    if (finalJSON['detalles'].length > 250) {
+        alert("Los detalles no deben superar los 250 caracteres.");
+        return;
+    }
+    if (isNaN(finalJSON['unidades']) || finalJSON['unidades'] < 0) {
+        alert("Las unidades deben ser un número mayor o igual a 0.");
+        return;
+    }
+    if (finalJSON['imagen'].trim() === "") {
+        finalJSON['imagen'] = "imagen/default.png";
+    }
+
     // SE OBTIENE EL STRING DEL JSON FINAL
     productoJsonString = JSON.stringify(finalJSON,null,2);
 
@@ -124,7 +154,7 @@ function agregarProducto(e) {
     client.onreadystatechange = function () {
         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
         if (client.readyState == 4 && client.status == 200) {
-            console.log(client.responseText);
+            alert(client.responseText);
         }
     };
     client.send(productoJsonString);
