@@ -5,8 +5,8 @@ var baseJSON = {
     "modelo": "XX-000",
     "marca": "NA",
     "detalles": "NA",
-    "imagen": "img/default.png"
-  };
+    "imagen": "imagen/default.png"
+};
 
 function init() {
     /**
@@ -194,7 +194,7 @@ function agregarProducto(e) {
 
 // FUNCIÓN CALLBACK DE BOTÓN "Eliminar"
 function eliminarProducto() {
-    if( confirm("De verdad deseas eliinar el Producto") ) {
+    if( confirm("De verdad deseas eliminar el Producto") ) {
         var id = event.target.parentElement.parentElement.getAttribute("productId");
         //NOTA: OTRA FORMA PODRÍA SER USANDO EL NOMBRE DE LA CLASE, COMO EN LA PRÁCTICA 7
 
