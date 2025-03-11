@@ -6,7 +6,7 @@ var baseJSON = {
     "marca": "NA",
     "detalles": "NA",
     "imagen": "img/default.png"
-  };
+};
 
 $(document).ready(function(){
     let edit = false;
@@ -190,6 +190,7 @@ $(document).ready(function(){
             
             // SE PONE LA BANDERA DE EDICIÓN EN true
             edit = true;
+            $('button.btn-primary').text("Modificar producto");
         });
         e.preventDefault();
     });    
