@@ -117,39 +117,10 @@ $(document).ready(function(){
         finalJSON['imagen'] = $('#imagen').val();
         $('#container').html('');
 
-        // VALIDACIONES
-        if (finalJSON['nombre'].trim() === "" || finalJSON['nombre'].length > 100) {
+         // VALIDACIONES
+        if (!validarNombre() || !validarMarca() || !validarModelo() || !validarPrecio() || !validarUnidades() || !validarDetalles()) {
             $('#product-result').show();
-            $('#container').append('<li>El nombre es requerido y debe tener máximo 100 caracteres.</li>');
             return;
-        }
-        if (finalJSON['marca'].trim() === "") {
-            $('#product-result').show();
-            $('#container').append('<li>La marca es requerida.</li>');
-            return;
-        }
-        if (finalJSON['modelo'].trim() === "" || finalJSON['modelo'].length > 25 || !/^[a-zA-Z0-9]+$/.test(finalJSON['modelo'])) {
-            $('#product-result').show();
-            $('#container').append('<li>El modelo es requerido y debe tener máximo 25 caracteres alfanuméricos.</li>');
-            return;
-        }
-        if (isNaN(finalJSON['precio']) || finalJSON['precio'] <= 99.99) {
-            $('#product-result').show();
-            $('#container').append('<li>El precio debe ser un número mayor a 99.99.</li>');
-            return false;
-        }
-        if (isNaN(finalJSON['unidades']) || finalJSON['unidades'] < 0) {
-            $('#product-result').show();
-            $('#container').append('<li>Las unidades deben ser un número mayor o igual a 0.</li>');
-            return false;
-        }
-        if (finalJSON['detalles'].length > 250) {
-            $('#product-result').show();
-            $('#container').append('<li>Los detalles deben tener máximo 250 caracteres.</li>');
-            return;
-        }
-        if (finalJSON['imagen'].trim() === "") {
-            finalJSON['imagen'] = "imagen/default.png";
         }
 
         // SE CONVIERTE EL JSON DE STRING A OBJETO
@@ -237,5 +208,89 @@ $(document).ready(function(){
     $('#marca').on('blur', validarMarca);
     $('#detalles').on('blur', validarDetalles);
     $('#imagen').on('blur', validarImagen);
+
+    // Validar nombre de producto en la base de datos
+    $('#name').on('blur', validarNombreEnBD);
 });
-    
+
+function validarNombre() {
+    let nombre = $('#name').val().trim();
+    $('#container').html('');
+    if (nombre === "" || nombre.length > 100) {
+        $('#product-result').show();
+        $('#container').append("<li>El nombre es requerido y debe tener máximo 100 caracteres.</li>");
+        return false;
+    } else {
+        $('#product-result').show();
+        $('#container').append("<li>Nombre introducido con éxito.</li>");
+        return true;
+    }
+}
+
+function validarPrecio() {
+    let precio = parseFloat($('#precio').val());
+    $('#container').html('');
+    if (isNaN(precio) || precio <= 99.99) {
+        $('#product-result').show();
+        $('#container').append("<li>El precio es requerido y debe ser mayor a 99.99.</li>");
+        return false;
+    } else {
+        $('#product-result').show();
+        $('#container').append("<li>Precio introducido con éxito.</li>");
+        return true;
+    }
+}
+
+function validarUnidades() {
+    let unidades = parseInt($('#unidades').val());
+    $('#container').html('');
+    if (isNaN(unidades) || unidades < 0) {
+        $('#product-result').show();
+        $('#container').append("<li>Las unidades deben ser un número mayor o igual a 0.</li>");
+        return false;
+    } else {
+        $('#product-result').show();
+        $('#container').append("<li>Unidades introducidas con éxito.</li>");
+        return true;
+    }
+}
+
+function validarModelo() {
+    let modelo = $('#modelo').val().trim();
+    $('#container').html('');
+    if (modelo === "" || modelo.length > 25 || !/^[a-zA-Z0-9]+$/.test(modelo)) {
+        $('#product-result').show();
+        $('#container').append("<li>El modelo es requerido, alfanumérico y debe tener máximo 25 caracteres.</li>");
+        return false;
+    } else {
+        $('#product-result').show();
+        $('#container').append("<li>Modelo introducido con éxito.</li>");
+        return true;
+    }
+}
+
+function validarMarca() {
+    let marca = $('#marca').val().trim();
+    $('#container').html('');
+    if (marca === "") {
+        $('#product-result').show();
+        $('#container').append("<li>La marca es requerida.</li>");
+        return false;
+    } else {
+        $('#product-result').show();
+        $('#container').append("<li>Marca introducida con éxito.</li>");
+        return true;
+    }
+}
+
+function validarDetalles() {
+    let detalles = $('#detalles').val().trim();
+    $('#container').html('');
+    if (detalles.length > 250) {
+        $('#product-result').show();
+        $('#container').append("<li>Los detalles no deben superar los 250 caracteres.</li>");
+        return false;
+    } else {
+        return true;
+    }
+}
