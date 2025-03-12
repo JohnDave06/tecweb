@@ -32,10 +32,32 @@
               <!-- FORMULARIO PARA AGREGAR PRODUCTO -->
               <form id="product-form">
                 <div class="form-group">
-                  <input class="form-control" type="text" id="name" placeholder="Nombre de producto">
+                  <label for="name">Nombre del producto</label>
+                  <input class="form-control" type="text" id="name" placeholder="Ingrese el nombre de producto">
                 </div>
+                <label for="marca">Marca del producto</label>
                 <div class="form-group">
-                  <textarea class="form-control" id="description" cols="30" rows="10" placeholder="JSON de producto"></textarea>
+                  <input type="text" id="marca" class="form-control" placeholder="Ingrese la marca del producto">
+                </div>
+                <label for="modelo">Modelo del producto</label>
+                <div class="form-group">
+                  <input type="text" id="modelo" class="form-control" placeholder="Ingrese el modelo del producto">
+                </div>
+                <label for="precio">Precio del producto</label>
+                <div class="form-group">
+                  <input type="text" id="precio" class="form-control" placeholder="Ingrese el precio del producto">
+                </div>
+                <label for="unidades">Unidades</label>
+                <div class="form-group">
+                  <input type="text" id="unidades" class="form-control" placeholder="Ingrese las unidades del producto">
+                </div>
+                <label for="detalles">Detalles del producto</label>
+                <div class="form-group">
+                  <input type="text" id="detalles" class="form-control" placeholder="Ingrese los detalles del producto">
+                </div>
+                <label for="imagen">Imagen del producto</label>
+                <div class="form-group">
+                  <input type="text" id="imagen" class="form-control" placeholder="imagen/default.png">
                 </div>
                 <input type="hidden" id="productId">
                 <button class="btn btn-primary btn-block text-center" type="submit">
