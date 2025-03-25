@@ -21,25 +21,41 @@ class Pagina {
     }
 }
 
-/**
- * Implementar las clases Cabecera, Cuerpo y Pie
- *
- *  1. La clase Cabecera tiene las siguiente características
- *      > Tiene un constructor que recibe un texto e inicializa un
- *        atributo de nombre titulo.
- *      > Tiene una función graficar, que utiliza un encabezado de
- *        nivel 1, a partir de un texto y un estilo por defecto.
- *  2. La clase Cuerpo tiene las siguiente características
- *      > No tiene constructor, pero tiene un atributo privado que
- *        corresponde a un arreglo de lineas de texto, el atributo
- *        se debe llamar lineas.
- *      > Tiene una función graficar, que recorre el atributo lineas
- *        para mostar elementos <p> que contiene el texto dentro del
- *        arreglo.
- *  3. La clase Pie tiene las siguiente características
- *      > Tiene un constructor que recibe un texto e inicializa un
- *        atributo de nombre mensaje.
- *      > Tiene una función graficar, que utiliza un encabezado de
- *        nivel 4, a partir de un texto y un estilo por defecto.
- */
+class Cabecera {
+    private $titulo;
+
+    public function __construct($tit) {
+        $this->titulo = $tit;
+    }
+
+    public function graficar() {
+        echo '<h1>'. $this->titulo .'</h1>';
+    }
+}
+
+class Cuerpo {
+    private $lineas;
+
+    public function insertar_parrafo($texto) {
+        $this->lineas[] = $texto;
+    }   
+
+    public function graficar() {
+        for ($i=0; $i<count($this->lineas); $i++) {
+            echo '<p>'. $this->lineas[$i] .'</p>';
+        }
+    }
+}
+
+class Pie {
+    private $titulo;
+
+    public function __construct($tit) {
+        $this->titulo = $tit;
+    }
+
+    public function graficar() {
+        echo '<h4>'. $this->titulo .'</h4>';
+    }
+}
 ?>
