@@ -1,3 +1,25 @@
+<?php if (isset($_GET['success'])): ?>
+    <div class="alert alert-success">
+        <?= htmlspecialchars($_GET['success']) ?>
+    </div>
+    <script>
+        const url = new URL(window.location.href);
+        url.searchParams.delete('success');
+        window.history.replaceState({}, document.title, url.toString());
+    </script>
+<?php endif; ?>
+
+<?php if (isset($_GET['error'])): ?>
+    <div class="alert alert-danger">
+        <?= htmlspecialchars($_GET['error']) ?>
+    </div>
+    <script>
+        const url = new URL(window.location.href);
+        url.searchParams.delete('error');
+        window.history.replaceState({}, document.title, url.toString());
+    </script>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

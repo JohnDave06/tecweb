@@ -42,25 +42,5 @@
             </form>
         </div>
     </div>
-    <script>
-    document.getElementById('add-product-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita el envío normal del formulario
-
-        const formData = new FormData(this);
-
-        fetch('/tecweb/actividades/Propuesta_MVC/products/add', {
-            method: 'POST',
-            body: new URLSearchParams(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            if (data.status === 'success') {
-                window.location.href = '/tecweb/actividades/Propuesta_MVC/products/list';
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    });
-</script>
 </body>
 </html>

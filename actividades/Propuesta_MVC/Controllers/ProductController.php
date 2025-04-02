@@ -23,23 +23,21 @@ class ProductController {
             isset($data['unidades']) && $data['unidades'] >= 0 &&
             !empty($data['detalles']) && !empty($data['imagen'])) {
             try {
-                if ($this->productsModel->exists($data)) {
-                    echo "<script>alert('El producto ya existe en la base de datos.'); window.history.back();</script>";
-                    return;
-                }
-    
                 $result = $this->productsModel->add($data);
                 if ($result['status'] === 'success') {
-                    echo "<script>alert('Producto agregado exitosamente.'); window.location.href = '/tecweb/actividades/Propuesta_MVC/products/list';</script>";
+                    header("Location: /tecweb/actividades/Propuesta_MVC/products/list?success=Producto agregado exitosamente.");
                     exit;
                 } else {
-                    echo "<script>alert('Error al agregar el producto.'); window.history.back();</script>";
+                    header("Location: /tecweb/actividades/Propuesta_MVC/products/list?error=" . urlencode($result['message']));
+                    exit;
                 }
             } catch (\Exception $e) {
-                echo "<script>alert('Ocurrió un error al agregar el producto.'); window.history.back();</script>";
+                header("Location: /tecweb/actividades/Propuesta_MVC/products/list?error=Ocurrió un error al agregar el producto.");
+                exit;
             }
         } else {
-            echo "<script>alert('Datos incompletos o inválidos.'); window.history.back();</script>";
+            header("Location: /tecweb/actividades/Propuesta_MVC/products/list?error=Datos incompletos o inválidos.");
+            exit;
         }
     }
 
@@ -50,49 +48,54 @@ class ProductController {
             try {
                 $result = $this->productsModel->delete($id);
                 if ($result['status'] === 'success') {
-                    header("Location: /tecweb/actividades/Propuesta_MVC/products/list");
+                    header("Location: /tecweb/actividades/Propuesta_MVC/products/list?success=Producto eliminado exitosamente.");
                     exit;
                 } else {
-                    echo "<script>alert('Error al eliminar el producto.'); window.history.back();</script>";
+                    header("Location: /tecweb/actividades/Propuesta_MVC/products/list?error=" . urlencode($result['message']));
+                    exit;
                 }
             } catch (\Exception $e) {
-                echo "<script>alert('Ocurrió un error al eliminar el producto.'); window.history.back();</script>";
+                header("Location: /tecweb/actividades/Propuesta_MVC/products/list?error=Ocurrió un error al eliminar el producto.");
+                exit;
             }
         } else {
-            echo "<script>alert('ID del producto no proporcionado.'); window.history.back();</script>";
+            header("Location: /tecweb/actividades/Propuesta_MVC/products/list?error=ID del producto no proporcionado.");
+            exit;
         }
     }
 
     public function update() {
         $data = $_POST;
-
+    
         try {
+            // Verifica si ya existe otro producto con los mismos datos
             if ($this->productsModel->exists($data) && $data['id'] != $this->productsModel->getIdByDetails($data)) {
-                echo "<script>alert('Ya existe otro producto con los mismos datos.'); window.history.back();</script>";
-                return;
+                header("Location: /tecweb/actividades/Propuesta_MVC/products/edit?id={$data['id']}&error=Ya existe otro producto con los mismos datos.");
+                exit;
             }
-
             $result = $this->productsModel->edit($data);
             if ($result['status'] === 'success') {
-                echo "<script>alert('Producto actualizado exitosamente.'); window.location.href = '/tecweb/actividades/Propuesta_MVC/products/list';</script>";
+                header("Location: /tecweb/actividades/Propuesta_MVC/products/list?success=Producto actualizado exitosamente.");
                 exit;
             } else {
-                echo "<script>alert('Error al actualizar el producto.'); window.history.back();</script>";
+                header("Location: /tecweb/actividades/Propuesta_MVC/products/edit?id={$data['id']}&error=Error al actualizar el producto.");
+                exit;
             }
         } catch (\Exception $e) {
-            echo "<script>alert('Ocurrió un error al actualizar el producto.'); window.history.back();</script>";
+            header("Location: /tecweb/actividades/Propuesta_MVC/products/edit?id={$data['id']}&error=Ocurrió un error al actualizar el producto.");
+            exit;
         }
     }
 
     public function edit() {
-        $id = $_GET['id'] ?? null; // Obtén el ID del producto desde la URL
+        $id = $_GET['id'] ?? null;
         if ($id) {
             try {
-                $product = $this->productsModel->single($id); // Obtén los datos del producto desde el modelo
+                $product = $this->productsModel->single($id);
                 if (isset($product['status']) && $product['status'] === 'error') {
                     throw new \Exception($product['message']);
                 }
-                require_once __DIR__ . '/../Views/products/edit.php'; // Carga la vista de edición
+                require_once __DIR__ . '/../Views/products/edit.php';
             } catch (\Exception $e) {
                 echo "Error: " . $e->getMessage();
             }
@@ -103,8 +106,8 @@ class ProductController {
     
     public function list() {
         try {
-            $products = $this->productsModel->list(); // Obtén los productos desde el modelo
-            require_once __DIR__ . '/../Views/products/list.php'; // Carga la vista
+            $products = $this->productsModel->list();
+            require_once __DIR__ . '/../Views/products/list.php';
         } catch (\Exception $e) {
             echo "Error: " . $e->getMessage();
         }

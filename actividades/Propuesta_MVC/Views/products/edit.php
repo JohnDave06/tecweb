@@ -9,7 +9,14 @@
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="card p-4 shadow" style="width: 100%; max-width: 600px;">
             <h1 class="mt-4">Editar Producto</h1>
-            <form id="edit-product-fomr" action="/tecweb/actividades/Propuesta_MVC/products/update" method="POST">
+
+            <?php if (isset($_GET['error'])): ?>
+                <div class="alert alert-danger">
+                    <?= htmlspecialchars($_GET['error']) ?>
+                </div>
+            <?php endif; ?>
+
+            <form id="edit-product-form" action="/tecweb/actividades/Propuesta_MVC/products/update" method="POST">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($product['id']) ?>">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
@@ -43,25 +50,5 @@
             </form>
         </div>
     </div>
-    <script>
-    document.getElementById('edit-product-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const formData = new FormData(this);
-
-        fetch('/tecweb/actividades/Propuesta_MVC/products/update', {
-            method: 'POST',
-            body: new URLSearchParams(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            if (data.status === 'success') {
-                window.location.href = '/tecweb/actividades/Propuesta_MVC/products/list';
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    });
-</script>
 </body>
 </html>

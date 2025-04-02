@@ -9,19 +9,23 @@ class Products extends DataBase {
         parent::__construct();
     }
 
-    public function add($productData) {
+    public function add($data) {
+        if ($this->exists($data)) {
+            return ['status' => 'error', 'message' => 'El producto ya existe en la base de datos.'];
+        }
+    
         $query = "INSERT INTO productos (nombre, marca, modelo, precio, unidades, detalles, imagen, eliminado) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
         if ($stmt = $this->conexion->prepare($query)) {
             $stmt->bind_param(
                 "sssdiss",
-                $productData['nombre'],
-                $productData['marca'],
-                $productData['modelo'],
-                $productData['precio'],
-                $productData['unidades'],
-                $productData['detalles'],
-                $productData['imagen']
+                $data['nombre'],
+                $data['marca'],
+                $data['modelo'],
+                $data['precio'],
+                $data['unidades'],
+                $data['detalles'],
+                $data['imagen']
             );
             $success = $stmt->execute();
             $stmt->close();
@@ -34,6 +38,7 @@ class Products extends DataBase {
         if (!is_numeric($id)) {
             return ['status' => 'error', 'message' => 'ID inválido'];
         }
+    
         $query = "UPDATE productos SET eliminado = 1 WHERE id = ?";
         if ($stmt = $this->conexion->prepare($query)) {
             $stmt->bind_param("i", $id);
@@ -45,7 +50,9 @@ class Products extends DataBase {
     }
 
     public function edit($productData) {
-        $query = "UPDATE productos SET nombre = ?, marca = ?, modelo = ?, precio = ?, unidades = ?, detalles = ?, imagen = ? WHERE id = ?";
+        $query = "UPDATE productos 
+                SET nombre = ?, marca = ?, modelo = ?, precio = ?, unidades = ?, detalles = ?, imagen = ? 
+                WHERE id = ?";
         if ($stmt = $this->conexion->prepare($query)) {
             $stmt->bind_param(
                 "sssdissi",
@@ -107,6 +114,18 @@ class Products extends DataBase {
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
         return $result['count'] > 0; // Devuelve true si el producto ya existe
+    }
+
+    public function getIdByDetails($data) {
+        $query = "SELECT id FROM productos WHERE nombre = ? AND marca = ? AND modelo = ?";
+        if ($stmt = $this->conexion->prepare($query)) {
+            $stmt->bind_param("sss", $data['nombre'], $data['marca'], $data['modelo']);
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_assoc();
+            $stmt->close();
+            return $result ? $result['id'] : null;
+        }
+        return null; // Devuelve null si no se puede preparar la consulta
     }
 }
 ?>
