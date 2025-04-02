@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
 </head>
 <body>
-    <!-- BARRA DE NAVEGACIÓN  -->
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">ProductApp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -1,4 +1,3 @@
-<!-- filepath: c:\xampp\htdocs\tecweb\actividades\Propuesta_MVC\Views\products\edit.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
