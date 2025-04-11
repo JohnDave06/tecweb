@@ -59,6 +59,28 @@
         return $response; // devolver la respuesta
     });
 
+    /*  
+ // Esta es la versión correcta para Slim 4  para test json video
+    $app->get('/testjson', function (Request $request, Response $response, $args) {
+         $data[0]["nombre"] = "Angel"; // crear un array de datos
+         $data[0]["apellido"] = "Sarmiento totolhua"; // crear un array de datos
+@@ -81,5 +82,18 @@
+         $response->getBody()->write(json_encode($data, JSON_PRETTY_PRINT)); // convertir el array a JSON y escribir en la respuesta
+         return $response; // devolver la respuesta
+    });
+ */
+
+     // Esta es la versión correcta para Slim 4  para test json (post)
+    $app->post('/testjson', function (Request $request, Response $response, $args) {
+        $reqPost = $request->getParsedBody(); // obtener el cuerpo de la petición POST
+        $data[0]["nombre"] = $reqPost ["nombre1"]; // crear un array de datos
+        $data[0]["apellido"] = $reqPost ["apellidos1"]; // crear un array de datos
+        $data[1]["nombre"] = $reqPost ["nombre2"]; // crear un array de datos
+        $data[1]["apellido"] = $reqPost ["apellidos2"]; // crear un array de datos
+        $response->getBody()->write(json_encode($data, JSON_PRETTY_PRINT)); // convertir el array a JSON y escribir en la respuesta
+        return $response; // devolver la respuesta
+    });
+
      $app->run(); // ejecutar el servidor web Slim 4
 
 ?>
