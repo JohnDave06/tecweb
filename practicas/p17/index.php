@@ -37,6 +37,28 @@
         return $response;
     });
 
+    /*
+     // Esta es la version del video de SLim v3 por eso no funciona el siguiente código
+    $app->post("/puebapost", function ($request , $response, $args){
+
+         $reqPost = $request->getParsedBody(); // obtener el cuerpo de la petición POST
+         $val1 = $reqPost["valor1"]; // obtener el valor del campo valor1
+         $val2 = $reqPost["valor2"]; // obtener el valor del campo valor2
+        
+         $response->write( "valores:" . $val1 . " " . $val2); // escribir en la respuesta
+         return $response; // devolver la respuesta
+    });
+ */
+     // Esta es la versión correcta para Slim 4
+    $app->post("/puebapost", function (Request $request, Response $response, $args) {
+        $reqPost = $request->getParsedBody(); // obtener el cuerpo de la petición POST
+        $val1 = $reqPost["valor1"]; // obtener el valor del campo valor1
+        $val2 = $reqPost["valor2"]; // obtener el valor del campo valor2
+        
+        $response->getBody()->write("valores:" . $val1 . " " . $val2); // escribir en la respuesta
+        return $response; // devolver la respuesta
+    });
+
      $app->run(); // ejecutar el servidor web Slim 4
 
 ?>
