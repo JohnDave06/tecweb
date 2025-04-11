@@ -22,6 +22,21 @@
         return $response;
     });
 
+    /*  
+    // esta version es del video de SLim v3 por eso no funciona el siguiente código
+    $app->get('/hola/{nombre}', function ( $request, $response , $args ) 
+    {}
+        $response->write("Hola, " . $args["nombre]. "!");
+        return $response;
+    });
+ */
+
+     // Esta es la versión correcta para Slim 4 lectura de url
+    $app->get('/hola/{nombre}', function (Request $request, Response $response, $args) {
+        $response->getBody()->write("Hola, " . $args["nombre"] . "!");
+        return $response;
+    });
+
      $app->run(); // ejecutar el servidor web Slim 4
 
 ?>
