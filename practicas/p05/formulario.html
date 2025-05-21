@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Concurso ¡Chidos mis Tenis!</title>
+</head>
+<body>
+    <h1>Concurso de Tenis Mike® “¡Chidos mis Tenis!”</h1>
+    <p>Llena este formulario para participar en nuestro increíble concurso.</p>
+
+    <form action="concurso.php" method="post">
+    
+        <!-- Información personal -->
+        <fieldset>
+            <legend>Información Personal</legend>
+            <ul>
+                <li>Nombre: <input type="text" name="name" required></li>
+                <li>Dirección de E-mail: <input type="email" name="email" required></li>
+                <li>Número Telefónico: <input type="tel" name="phone" required></li>
+                <li>Mis tenis son tan feos porque…<br>
+                <textarea name="reason" rows="4" cols="60" maxlength="250" placeholder="Explica aquí por qué tus tenis son tan feos..."></textarea>
+                </li>
+            </ul>
+        </fieldset>
+
+        <!-- Diseño personalizado del Tenis -->
+        <fieldset>
+            <legend>Diseño personalizado del Tenis</legend>
+
+            <!-- Color -->
+            <fieldset>
+            <legend>Color (escoge uno):</legend>
+            <ul>
+                <li><input type="radio" name="color" value="red" checked>Rojo</li>
+                <li><input type="radio" name="color" value="blue">Azul</li>
+                <li><input type="radio" name="color" value="black">Negro</li>
+                <li><input type="radio" name="color" value="silver">Plateado</li>
+            </ul>
+            </fieldset>
+
+            <!-- Características -->
+            <fieldset>
+                <legend>Características (escoge tantas como quieras):</legend>
+                <ul>
+                    <li><input type="checkbox" name="features[]" value="laces">Cordones brillantes</li>
+                    <li><input type="checkbox" name="features[]" value="logo" checked>Logo metálico</li>
+                    <li><input type="checkbox" name="features[]" value="sole">Suela luminosa</li>
+                    <li><input type="checkbox" name="features[]" value="wifi">WiFi integrado</li>
+                </ul>
+            </fieldset>
+
+            <!-- Talla -->
+            <fieldset>
+                <legend>Talla</legend>
+                <p>Las medidas reflejan el estándar masculino:</p>
+                <select name="size" size="1">
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select>
+            </fieldset>
+        </fieldset>
+
+        <!-- Botones de envío -->
+        <p>
+            <input type="submit" value="¡Enviar mi participación!">
+            <input type="reset" value="Borrar formulario">
+        </p>
+    </form>
+</body>
+</html>

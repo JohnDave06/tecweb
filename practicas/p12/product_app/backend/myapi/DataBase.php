@@ -3,7 +3,7 @@ namespace Backend\myapi;
 abstract class DataBase {
     protected $conexion;
     protected $data = NULL;
-    public function __construct($user='root', $pass='samd2704', $db) {
+    public function __construct($user='root', $pass='contraseña_06', $db) {
         $this->conexion = @mysqli_connect(
             'localhost',
             $user,
