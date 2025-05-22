@@ -1,0 +1,16 @@
+<!ENTITY % region "(MEX|USA|ESP|ARG|KOR)">
+
+<!ELEMENT serviciovod (peliculas, series)>
+<!ELEMENT peliculas (pelicula+)>
+<!ELEMENT pelicula (titulo, director, año)>
+<!ATTLIST peliculas region %region; "USA">
+
+<!ELEMENT series (programa+)>
+<!ELEMENT programa (titulo, canal, temporada)>
+<!ATTLIST series region %region; "USA">
+
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT director (#PCDATA)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT canal (#PCDATA)>
+<!ELEMENT temporada (#PCDATA)>

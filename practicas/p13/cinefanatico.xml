@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cinefanatico SYSTEM "cinefanatico.dtd">
+<cinefanatico>
+    <tarjeta noserie="A001" visitas="5" puntos="300">
+        <nombre>John Vergara</nombre>
+        <correo>john_vergara@gmail.com</correo>
+        <telefono tipo="movil">5539325844</telefono>
+        <telefono tipo="casa">5557654321</telefono>
+    </tarjeta>
+    <tarjeta noserie="A002" visitas="3" puntos="120">
+        <nombre>Joaquin Alvarez</nombre>
+        <correo>joaquin_alvarez@gmail.com</correo>
+        <telefono tipo="movil">5559876543</telefono>
+    </tarjeta>
+</cinefanatico>

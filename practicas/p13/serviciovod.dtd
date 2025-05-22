@@ -1,0 +1,10 @@
+<!ELEMENT serviciovod (peliculas, programas)>
+<!ELEMENT peliculas (pelicula+)>
+<!ELEMENT pelicula (titulo, director, año)>
+<!ELEMENT programas (programa+)>
+<!ELEMENT programa (titulo, canal, temporada)>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT director (#PCDATA)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT canal (#PCDATA)>
+<!ELEMENT temporada (#PCDATA)>

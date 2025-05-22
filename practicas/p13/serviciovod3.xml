@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviciovod>
+    <peliculas>
+        <pelicula>
+            <titulo>&lt;</titulo> <!-- Entidad predefinida -->
+            <director>Nombre</director>
+            <año>2000</año>
+        </pelicula>
+    </peliculas>
+    <programas>
+        <programa>
+            <titulo><![CDATA[<]]></titulo> <!-- CDATA -->
+            <canal>Canal</canal>
+            <temporada>1</temporada>
+        </programa>
+    </programas>
+</serviciovod>

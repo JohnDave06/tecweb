@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE serviciovod SYSTEM "serviciovod.dtd">
+<serviciovod>
+    <peliculas>
+        <pelicula>
+            <titulo>Matrix</titulo>
+            <director>Lana Wachowski</director>
+            <año>1999</año>
+        </pelicula>
+    </peliculas>
+    <programas>
+        <programa>
+            <titulo>Dark</titulo>
+            <canal>Netflix</canal>
+            <temporada>3</temporada>
+        </programa>
+    </programas>
+</serviciovod>

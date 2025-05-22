@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE serviciovod SYSTEM "serviciovod_ep.dtd">
+<serviciovod>
+    <peliculas region="MEX">
+        <pelicula>
+            <titulo>Parasite</titulo>
+            <director>Bong Joon-ho</director>
+            <año>2019</año>
+        </pelicula>
+    </peliculas>
+    <series region="KOR">
+        <programa>
+            <titulo>Squid Game</titulo>
+            <canal>Netflix</canal>
+            <temporada>1</temporada>
+        </programa>
+    </series>
+</serviciovod>
